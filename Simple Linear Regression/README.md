@@ -78,6 +78,38 @@
       plt.scatter(x,y)
       plt.plot(xfit,yfit)
 ```
+## Lưu ý cực mạnh.....
+Thực ra những bài về Simple Linear Regression không nhất thiết phải làm dài dòng như thế, ta có thể dùng cách ngắn gọn hơn. Với các bước thực hiện như sau
+### 1. Vẫn đọc vô bình thường như bài trên
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+rng = np.random.RandomState(42)
+x = 10 * rng.rand(50)
+y = 2 * x -1 + rng.randn(50)
+```
+### 2. Ta sẽ chia bộ data thành 2 phần với 80% cho trainning set và 20% cho test set:
+Nhưng sẽ có một điều ta cần phải quan tâm là x của chúng ta bắt buộc phải là **mảng đa chiều** không thể là mảng một chiều mọi người có thể đọc tại [đâ](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html). Do đó ta dùng method reshape tạo lại.
+```python
+x = x.reshape(-1,1)
+```
+Sau đó chia data
+```python
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(x,y, test_size = 0.02, random_state = 0)
+```
+### 3. Sử dụng thư viện linear_model để fit training set vào model dự đoán:
+Ta nên đọc qua một tí kiến thức tại [đây](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)
+```python
+from sklearn.linear_model import LinearRegression
+lin_reg = LinearRegression()
+lin_reg.fit(X_train, y_train)
+```
+### 4. Trực quan hoá mô hình dự đoán:
+```python
+plt.scatter(X_train, y_train)
+plt.plot(X_train, lin_reg.predict(X_train))
+```
 
 [Full source code ở đây](https://github.com/tandathcmute/MLrepo/blob/master/Simple%20Linear%20Regression/demoSimpleLinearRegression.ipynb)
 
