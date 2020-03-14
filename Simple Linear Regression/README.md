@@ -6,18 +6,18 @@
 
 ### 1. Khởi tạo bộ data để mô phỏng thuật toán hồi quy tuyến tính
 ```python
-      import numpy as np
-      import matplotlib.pyplot as plt
-      rng = np.random.RandomState(42)
-      x = 10 * rng.rand(50)
-      y = 2 * x -1 + rng.randn(50)
+import numpy as np
+import matplotlib.pyplot as plt
+rng = np.random.RandomState(42)
+x = 10 * rng.rand(50)
+y = 2 * x -1 + rng.randn(50)
 ```
 ### 2. Chọn class của model
 
   **Để tính toán dự đoán kết quả mô hình hồi quy tuyến tính, ta có thể import mô hình hồi quy tuyến tính đơn giản như sau**
 
 ```python
-      from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression
 ```
   **Tuy nhiên, mô hình hồi quy tuyến tính tổng quát hơn có tồn tại, ta có thể đọc [sklearn.linear_model module documentation](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html)**
 
@@ -37,26 +37,26 @@
   
   #### Chúng ta khởi tạo *LinearRegression class* và chỉ định phù hợp với intercept bằng cú pháp *fit_intercept*
   ```python
-      model = LinearRegression(fit_intercept = True)
+    model = LinearRegression(fit_intercept = True)
   ```
   **Lưu ý: Khi khởi tạo mô hình, chỉ có một hành động duy nhất là lưu trữ những giá trị của hyperparameter. Cụ thể, ta không thể áp dụng model cho bất kì data nào. Scikit-learn API phân biệt rõ ràng giữa lựa chọn mô hình và áp dụng mô hình vào data.**
 
 ### 4. Sắp xếp dữ liệu thành ma trận tính năng và vector target:
   **Scikit learn mô tả data là một ma trận hai chiều và mảng một chiều. Để sắp xếp lại dữ liệu ta cần phải thay đổi ma trận thành mảng một chiều bằng cú pháp:**
 ```python
-      X = x[:, np.newaxis]
+X = x[:, np.newaxis]
 ```
 **Và nó dùng để fit model vào bộ data của chúng ta.**
 
 ### 5.Fit mô hình vào bộ data:
   **Để áp dụng mô hình vào data t sẽ dung *fit()* method của model:**
 ```python
-      model.fit(X,y)
+model.fit(X,y)
 ```
 **Trong quá trình fit model, ta luôn nhận được về hai đại lượng đó chính là hệ số hồi quy *coef_* (hay còn gọi là độ dốc) và sai số *intercept_*.**
 ```python
-      model.coef_
-      model.intercept_
+model.coef_
+model.intercept_
 ```
 ### 6. Dự đoán nhãn cho những dữ liệu chưa biết (dự đoán kết quả).
   **Để dự đoán nhãn cho những dữ liệu chưa biết, ta sẽ xây dựng training set. Trong scikit learn, ta dùng *predict()* method để dự đoán.**
@@ -65,18 +65,18 @@
 ```
 **Và trước hết chúng ta phải sắp xếp lại dữ liệu trong *xfit* giống như với bộ data *X***
 ```python
-      Xfit = xfit[:, np.newaxis]
+Xfit = xfit[:, np.newaxis]
 ```
 **Tiếp theo ta sẽ sử dụng model vừa tạo để tiến hành dự đoán.**
 ```python
-      yfit = model.predict(Xfit)
+yfit = model.predict(Xfit)
 ```
 
 ### 6. Trực quan hoá mô hình.
   **Ta sẽ trực quan hoá kết quả bao gồm bộ data đầu và phương trình hồi quy của mô hình.**
 ```python
-      plt.scatter(x,y)
-      plt.plot(xfit,yfit)
+plt.scatter(x,y)
+plt.plot(xfit,yfit)
 ```
 ## Lưu ý cực mạnh.....
 Thực ra những bài về Simple Linear Regression không nhất thiết phải làm dài dòng như thế, ta có thể dùng cách ngắn gọn hơn. Với các bước thực hiện như sau
@@ -89,7 +89,7 @@ x = 10 * rng.rand(50)
 y = 2 * x -1 + rng.randn(50)
 ```
 ### 2. Ta sẽ chia bộ data thành 2 phần với 80% cho trainning set và 20% cho test set:
-Nhưng sẽ có một điều ta cần phải quan tâm là x của chúng ta bắt buộc phải là **mảng đa chiều** không thể là mảng một chiều mọi người có thể đọc tại [đâ](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html). Do đó ta dùng method reshape tạo lại.
+Nhưng sẽ có một điều ta cần phải quan tâm là x của chúng ta bắt buộc phải là **mảng đa chiều** không thể là mảng một chiều mọi người có thể đọc tại [đây](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html). Do đó ta dùng method reshape chỉnh sửa lại x.
 ```python
 x = x.reshape(-1,1)
 ```
