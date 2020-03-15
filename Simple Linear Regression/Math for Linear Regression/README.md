@@ -48,7 +48,7 @@ Khi chính xác, điểm dừng của chúng ta sẽ chạm điểm thấp nhấ
 	J = (1/(2*m))*sum_error
 	return J
 ```
-Hàm mất mát chỉ để tìm được θ nhưng không thể tìm được bộ θ tốt nhất. Nó sinh ra chỉ để tìm theta nhưng để tìm được θ tốt nhất đó chính là việc của ***Gradient Descent***
+Hàm mất mát chỉ để tìm được θ nhưng không thể tìm được bộ θ tốt nhất. Đối với đồ thị nhiều điểm lõm, hàm mất mát sẽ tìm điểm lõm gần nó nhất và kết thúc. Và để tìm được điểm thấp nhất trong đồ thị nhiều điểm lõm, **Gradient Descemt** sẽ tìm một cách chính xác nhất.
   ### Gradient Descent
 ![](https://github.com/tandathcmute/MLrepo/blob/master/Simple%20Linear%20Regression/Math%20for%20Linear%20Regression/congthucgradientdescent.PNG)
 
@@ -72,7 +72,7 @@ def gradientdescent(X,y,alpha=0.02,iter=5000):
 ```
 
 Trong đó: 
-  * *alpha* bước chạy mặc định là 0.02. Tuy nhiên khi ta tăng lên có thể xảy ra trường hợp nó bước qua điểm lõm còn khi giảm thấp nó sẽ đi rất chậm dẫn đến tốn thời gian.
+  * *alpha* bước chạy mặc định là 0.02. Tuy nhiên khi ta tăng lên có thể xảy ra trường hợp nó bước qua điểm lõm, khi giảm thấp nó sẽ đi rất chậm dẫn đến tốn thời gian.
   * *iter* là số lần lặp. Chúng ta có thể điều chỉnh được số lần lặp này.
   * *theta* chính là ma trận cần tìm, và nó phải bằng đúng số cột của X
   * *precost* để kiểm tra giá trị của điểm đang xét lúc đầu
