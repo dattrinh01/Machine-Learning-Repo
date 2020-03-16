@@ -1,6 +1,6 @@
 # Kiến thức toán về Linear Regression
 
-## Các kiến thức cần phải học:
+## Các kiến thức cần phải biết:
   * Đại số tuyến tính và cấu trúc đại số
   * Toán cơ bản bao gồm đạo hàm, tích phân, vi phân
 ## Công thức cơ bản cân nắm:
