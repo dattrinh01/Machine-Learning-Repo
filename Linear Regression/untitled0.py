@@ -1,4 +1,3 @@
-"""
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -27,7 +26,6 @@ for i in range(1, record):
     w[0] -= learning_rate*np.sum(r)
     w[1] -= learning_rate*np.sum(np.multiply(r, X[:,1].reshape(-1,1)))
     print(cost[i])
-
 predict = np.dot(X, w)
 plt.plot((X[0][1], X[N-1][1]),(predict[0], predict[N-1]), 'r')
 plt.show()
@@ -47,10 +45,12 @@ from sklearn.linear_model import LinearRegression
 lin_reg = LinearRegression()
 lin_reg.fit(X_train, y_train)
 
+y_pred = lin_reg.predict(X_train)
+
 plt.figure(figsize = (15,10))
 plt.scatter(X_train,y_train)
 plt.plot(X_train, lin_reg.predict(X_train), color = 'r')
 plt.xlabel('Diện tích', color = 'darkred')
 plt.ylabel('Giá', color = 'darkred')
 plt.title('Mô hình dự đoán giá nhà dựa trên diện tích', color = 'darkred')
-
+"""
