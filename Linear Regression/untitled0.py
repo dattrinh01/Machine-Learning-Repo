@@ -17,7 +17,7 @@ X = np.hstack((np.ones((N,1)), X))
 
 w = np.array([0.,1.]).reshape(-1,1)
 
-record = 10000
+record = 1000
 cost = np.zeros((record,1))
 learning_rate = 0.0000001
 for i in range(1, record):
@@ -26,8 +26,9 @@ for i in range(1, record):
     w[0] -= learning_rate*np.sum(r)
     w[1] -= learning_rate*np.sum(np.multiply(r, X[:,1].reshape(-1,1)))
     print(cost[i])
-predict = np.dot(X, w)
-plt.plot((X[0][1], X[N-1][1]),(predict[0], predict[N-1]), 'r')
+
+predict = X @ w
+plt.plot(X[:,1].reshape(-1,1), predict, color = 'r')
 plt.show()
 """
 import numpy as np
