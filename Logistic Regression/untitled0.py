@@ -10,8 +10,8 @@ y = data[:, 2].reshape(-1, 1)
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
-plt.scatter(X[:10,0], X[:10,1], color = 'red', edgecolors='none',s = 30, label = 'Cho vay')
-plt.scatter(X[10:, 0], X[10:,1], color = 'blue', edgecolors='none',s = 30, label = 'Từ chối')
+plt.scatter(X[:10,0], X[:10,1], color = 'red', label = 'Cho vay')
+plt.scatter(X[10:, 0], X[10:,1], color = 'blue', label = 'Từ chối')
 plt.legend(loc=1)
 
 X = np.hstack((np.ones((N,1)), X))
@@ -29,30 +29,3 @@ for i in range(1,record):
 rate = 0.5
 plt.plot((4, 10),(-(w[0]+4 * w[1]+ np.log(1/rate-1))/w[2], -(w[0] + 10*w[1]+ np.log(1/rate-1))/w[2]), 'g')
 plt.show()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
